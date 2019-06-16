@@ -26,16 +26,17 @@ $lastUpdatedTime = filemtime($file);
 $currentTime = time();
 //var_dump('$currentTime=', $currentTime);
 
-$difference = $currentTime-$lastUpdatedTime; // seconds
-//var_dump('$difference=', $difference);
-
 $text = 'The current temperature is unknown.  Please make sure the device is connected to wifi and ask again.';
 if (!empty($temperatureFile)) {
     $temperature = $temperatureFile;
     $temperature = round($temperature, 1);
     $text = 'The current temperature is ' . $temperature . ' degrees.';
+
+    $difference = $currentTime-$lastUpdatedTime; // seconds
+    //var_dump('$difference=', $difference);
+
     if ($difference > 300) { // 5 mins ago
-        $text .= 'The last temperature reading was ' . $temperature . ' degrees on ' . date('F j, g:i a', $lastUpdatedTime) . '.';
+        $text = 'The last temperature reading was ' . $temperature . ' degrees on ' . date('F j, g:i a', $lastUpdatedTime) . '.';
     }
 }
 
