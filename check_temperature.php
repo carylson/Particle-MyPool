@@ -35,7 +35,7 @@ if (!empty($temperatureFile)) {
     $difference = $currentTime-$lastUpdatedTime; // seconds
     //var_dump('$difference=', $difference);
 
-    if ($difference > 300) { // 5 mins ago
+    if ($difference > 600) { // 10 mins
         $text = 'The last temperature reading was ' . $temperature . ' degrees on ' . date('F j, g:i a', $lastUpdatedTime) . '.';
     }
 }
